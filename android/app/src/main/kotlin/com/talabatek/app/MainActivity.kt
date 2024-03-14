@@ -1,0 +1,6 @@
+package com.talabatek.app
+
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity: FlutterFragmentActivity() {
+}
