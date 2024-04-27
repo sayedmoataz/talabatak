@@ -13,7 +13,6 @@ import '../../widgets/PopDialog.dart';
 import '../../widgets/default_cached_network_image.dart';
 import '../../widgets/shoppage_skeleton.dart';
 import '../CategoryScreen/category_screen.dart';
-import '../layout/bottomNavigation_layout.dart';
 import '../search_screen.dart';
 import 'shop_details_screen.dart';
 
@@ -26,8 +25,7 @@ class ShopsScreen extends StatelessWidget {
       create: (BuildContext context) => AppCubit()
         ..getVendors(context)
         ..getSlider()
-        ..getCategories()
-        ,
+        ..getCategories(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
           if (state is SuccesGetDataStates) {
@@ -363,14 +361,22 @@ class ShopsScreen extends StatelessWidget {
                                                 Stack(
                                                   children: [
                                                     cubit
-                                                                .vendorModel!
-                                                                .results![index]
-                                                                .freeDeliveryLimit ==
-                                                            null
+                                                                    .vendorModel!
+                                                                    .results![
+                                                                        index]
+                                                                    .freeDeliveryLimit ==
+                                                                null ||
+                                                            (num.parse(cubit
+                                                                        .vendorModel!
+                                                                        .results![
+                                                                            index]
+                                                                        .freeDeliveryLimit ??
+                                                                    '0') ==
+                                                                0)
                                                         ? Container()
                                                         : Container(
                                                             alignment: Alignment
-                                                                .topCenter,
+                                                                .center,
                                                             height: 25.h,
                                                             decoration:
                                                                 BoxDecoration(
@@ -393,17 +399,23 @@ class ShopsScreen extends StatelessWidget {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  size: 10.sp),
+                                                                  size: 8.sp),
                                                             ),
                                                           ),
                                                     Padding(
                                                       padding: EdgeInsets.only(
                                                           top: cubit
-                                                                      .vendorModel!
-                                                                      .results![
-                                                                          index]
-                                                                      .freeDeliveryLimit ==
-                                                                  null
+                                                                          .vendorModel!
+                                                                          .results![
+                                                                              index]
+                                                                          .freeDeliveryLimit ==
+                                                                      null ||
+                                                                  (num.parse(cubit
+                                                                              .vendorModel!
+                                                                              .results![index]
+                                                                              .freeDeliveryLimit ??
+                                                                          '0') ==
+                                                                      0)
                                                               ? 0
                                                               : 20.0.h),
                                                       child: ClipRRect(
@@ -420,11 +432,17 @@ class ShopsScreen extends StatelessWidget {
                                                               'https://i.imgur.com/7vHILrC.jpeg',
                                                           fit: BoxFit.cover,
                                                           height: cubit
-                                                                      .vendorModel!
-                                                                      .results![
-                                                                          index]
-                                                                      .freeDeliveryLimit ==
-                                                                  null
+                                                                          .vendorModel!
+                                                                          .results![
+                                                                              index]
+                                                                          .freeDeliveryLimit ==
+                                                                      null ||
+                                                                  (num.parse(cubit
+                                                                              .vendorModel!
+                                                                              .results![index]
+                                                                              .freeDeliveryLimit ??
+                                                                          '0') ==
+                                                                      0)
                                                               ? 90.h
                                                               : 70.h,
                                                           width: MediaQuery.of(
@@ -432,52 +450,6 @@ class ShopsScreen extends StatelessWidget {
                                                               .size
                                                               .width,
                                                         ),
-                                                        //  Image.network(
-                                                        //   cubit
-                                                        //           .vendorModel!
-                                                        //           .results![
-                                                        //               index]
-                                                        //           .image ??
-                                                        //       'https://i.imgur.com/7vHILrC.jpeg',
-                                                        //   fit: BoxFit.cover,
-                                                        //   height: cubit
-                                                        //               .vendorModel!
-                                                        //               .results![
-                                                        //                   index]
-                                                        //               .freeDeliveryLimit ==
-                                                        //           null
-                                                        //       ? 90.h
-                                                        //       : 70.h,
-                                                        //   width:
-                                                        //       MediaQuery.of(
-                                                        //               context)
-                                                        //           .size
-                                                        //           .width,
-                                                        //   loadingBuilder:
-                                                        //       (BuildContext
-                                                        //               context,
-                                                        //           Widget
-                                                        //               child,
-                                                        //           ImageChunkEvent?
-                                                        //               loadingProgress) {
-                                                        //     if (loadingProgress ==
-                                                        //         null)
-                                                        //       return child;
-                                                        //     return Center(
-                                                        //       child:
-                                                        //           CircularProgressIndicator(
-                                                        //         value: loadingProgress
-                                                        //                     .expectedTotalBytes !=
-                                                        //                 null
-                                                        //             ? loadingProgress
-                                                        //                     .cumulativeBytesLoaded /
-                                                        //                 loadingProgress
-                                                        //                     .expectedTotalBytes!
-                                                        //             : null,
-                                                        //       ),
-                                                        //     );
-                                                        //   },
-                                                        // )
                                                       ),
                                                     ),
                                                     Align(
@@ -485,12 +457,11 @@ class ShopsScreen extends StatelessWidget {
                                                             Alignment.topRight,
                                                         child: Padding(
                                                           padding: EdgeInsets.only(
-                                                              top: cubit
-                                                                          .vendorModel!
-                                                                          .results![
-                                                                              index]
-                                                                          .freeDeliveryLimit ==
-                                                                      null
+                                                              top: cubit.vendorModel!.results![index].freeDeliveryLimit ==
+                                                                          null ||
+                                                                      (num.parse(cubit.vendorModel!.results![index].freeDeliveryLimit ??
+                                                                              '0') ==
+                                                                          0)
                                                                   ? 5
                                                                   : 45,
                                                               right: 5),

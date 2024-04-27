@@ -47,7 +47,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
           listener: (context, state) {},
           builder: (context, state) {
             AppCubit cubit = AppCubit.get(context);
-
             return UpgradeAlert(
               upgrader: Upgrader(
                   shouldPopScope: () => true,
@@ -79,31 +78,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     centerTitle: true,
                     elevation: 0,
                     backgroundColor: Colors.transparent,
-                    leading: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: Card(
-                        elevation: 1,
-                        color: cubit.themeMode == true
-                            ? Colors.grey[800]
-                            : Colors.grey[100],
-                        child: InkWell(
-                          onTap: () {
-                            CacheHelper.getData(key: "isLogged") == false
-                                ? popDialog(
-                                    context: context,
-                                    title: 'Login First'.tr(),
-                                    content: 'Please Sign In First'.tr(),
-                                    boxColor: Colors.red)
-                                : Navigator.pushNamed(
-                                    context, Routes.notificationScreen);
-                          },
-                          child: Image.asset(
-                            'assets/gifs/notification.gif',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
                     actions: [
                       CacheHelper.getData(key: "isLogged") == false
                           ? Padding(
@@ -111,9 +85,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
                                   const EdgeInsets.symmetric(vertical: 4.0),
                               child: Card(
                                 elevation: 1,
-                                color: cubit.themeMode == true
-                                    ? Colors.grey[800]
-                                    : Colors.grey[100],
+                                color: cubit.primaryColor,
+                                //  cubit.themeMode == true
+                                //     ? Colors.grey[800]
+                                //     : Colors.grey[100],
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.pushNamedAndRemoveUntil(context,
@@ -121,9 +96,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.login,
-                                      color: cubit.primaryColor,
+                                    child: Text(
+                                      "Sign In".tr(),
+                                      style: textStyle(context,
+                                          size: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ),
@@ -163,6 +141,41 @@ class _BottomNavigationState extends State<BottomNavigation> {
                                 ),
                               ),
                             ),
+                      Card(
+                        elevation: 0,
+                        color: cubit.primaryColor,
+                        //  cubit.themeMode == true
+                        //     ? Colors.grey[800]
+                        //     : Colors.grey[100],
+                        child: InkWell(
+                          onTap: () {
+                            CacheHelper.getData(key: "isLogged") == false
+                                ? popDialog(
+                                    context: context,
+                                    title: 'Login First'.tr(),
+                                    content: 'Please Sign In First'.tr(),
+                                    boxColor: Colors.red)
+                                : Navigator.pushNamed(
+                                    context, Routes.notificationScreen);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Track Order".tr(),
+                              style: textStyle(
+                                context,
+                                size: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          //  Image.asset(
+                          //   'assets/gifs/notification.gif',
+                          //   fit: BoxFit.cover,
+                          // ),
+                        ),
+                      ),
                     ],
                   ),
                   bottomNavigationBar: Container(

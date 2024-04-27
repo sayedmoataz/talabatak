@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -28,7 +30,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await CacheHelper.init();
-  print('ssss');
   bool firstMode = CacheHelper.getData(key: "isLight") ?? true;
   CacheHelper.saveIntData(key: 'homePath', value: 1);
 //  await  CacheHelper.sharedPreferences!.remove( 'CityId');
@@ -39,10 +40,11 @@ Future<void> main() async {
 
   await EasyLocalization.ensureInitialized();
 
-  firebaseMessaging.getToken().then((token) {
+  await firebaseMessaging.getToken().then((token) {
     Fcmtoken = token;
     print("Fcmtoken" + Fcmtoken!);
   });
+  log(Fcmtoken??'test token');
 
   handleNotifications();
 

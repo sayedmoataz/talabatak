@@ -22,8 +22,8 @@ class AddOrderScreen extends StatefulWidget {
 }
 
 class _AddOrderScreenState extends State<AddOrderScreen> {
-  final TextEditingController nameController = TextEditingController(
-      text: CacheHelper.getData(key: 'orderName') ?? '');
+  final TextEditingController nameController =
+      TextEditingController(text: CacheHelper.getData(key: 'orderName') ?? '');
 
   final TextEditingController phoneController = TextEditingController(
       text: CacheHelper.getData(key: 'phoneNumber') ?? '');
@@ -225,21 +225,18 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ),
                       ],
 
-                      Container(
-                        height: 150.h,
-                        child: TextFormGlobal(
-                          controller: notesController,
-                          maxlines: 50,
-                          validator: (value) {
-                            return value!.isEmpty
-                                ? "Enter your Notes".tr()
-                                : null;
-                          },
-                          text: 'Order Notes'.tr(),
-                          obscure: false,
-                          icon: Icons.note_add_outlined,
-                          textInputType: TextInputType.name,
-                        ),
+                      TextFormGlobal(
+                        controller: notesController,
+                        maxlines: 50,
+                        validator: (value) {
+                          return value!.isEmpty
+                              ? "Enter your Address".tr()
+                              : null;
+                        },
+                        text: 'Detailed address'.tr(),
+                        obscure: false,
+                        icon: Icons.note_add_outlined,
+                        textInputType: TextInputType.name,
                       ),
                       SizedBox(
                         height: 10.h,
