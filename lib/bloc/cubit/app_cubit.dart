@@ -3,11 +3,14 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../Router.dart';
@@ -305,7 +308,7 @@ class AppCubit extends Cubit<AppStates> {
         emit(GetNotificationSuccessState());
       }
     }).catchError((e) {
-      print(e.toString());
+      print('getNotification error is: ${e.toString()}');
       emit(GetNotificationSuccessState());
     });
   }
@@ -1010,6 +1013,53 @@ class AppCubit extends Cubit<AppStates> {
     }).catchError((e) {
       print(e.toString());
       emit(ErrorImageStates());
+    });
+  }
+
+  late List<Placemark> placemarks;
+  String latitude = '00.00000';
+  String longitude = '00.00000';
+  late String adrees;
+
+
+  Future<void> getCurrentLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      log( "من فضلك قم بتشغيل الموقع الجغرافي");
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        log("من فضلك قم بتشغيل الموقع الجغرافي");
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      log("خدمات التطبيق تعمل من خلال تحديد الموقع الجغرافي");
+    }
+
+    await Geolocator.getCurrentPosition().then((value) async {
+      latitude = value.latitude.toString();
+      longitude = value.longitude.toString();
+      placemarks =
+      await placemarkFromCoordinates(value.latitude, value.longitude);
+      adrees = "${placemarks[0].country.toString()} - ${placemarks[0].administrativeArea.toString()} - ${placemarks[0].subAdministrativeArea.toString()}";
+      if (kDebugMode) {
+        print(adrees);
+      }
+      if (kDebugMode) {
+        print("latitude is $latitude\nlongitude is $longitude");
+      }
+      emit(HomeGetLocationState());
+    }).catchError((e) {
+      if (kDebugMode) {
+        print("getCurrentLocation error is : $e");
+      }
     });
   }
 

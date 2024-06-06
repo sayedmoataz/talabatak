@@ -403,10 +403,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ? "Phone & Order".tr()
                                   : "Add to Cart".tr()),
                     ),
-                    const SizedBox(
+                /*    const SizedBox(
                       width: 28,
-                    ),
-                    Expanded(
+                    ),*/
+             /*       Expanded(
                       child: defaultMaterialButton(
                           press: () {
                             CacheHelper.getData(key: "isLogged") == false
@@ -423,7 +423,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           context: context,
                           icon: Icons.favorite,
                           label: "Add to Favourite".tr()),
-                    ),
+                    ),*/
                   ],
                 ),
               ),

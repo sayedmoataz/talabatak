@@ -71,20 +71,29 @@ class SettingsScreen extends StatelessWidget {
                           Card(
                               child: Column(children: [
                                 if(CacheHelper.getData(key: "isLogged") != false)...[
-                                  CustomListTile(
+                               /*   CustomListTile(
                                     press: ()async{
                                       Navigator.pushNamed(context, Routes.profilePage);
                                     },
                                     title: 'Profile'.tr(),
                                     leadingIcon: Icons.person,
                                   ),
-                                  Divider(color: Colors.grey,),
+                                  Divider(color: Colors.grey,),*/
                                   CustomListTile(
                                     press: ()async{
                                       cubit.getArea(context);
                                     },
                                     title: 'Shipping Place'.tr(),
                                     leadingIcon: Icons.local_shipping_outlined,
+                                  ),
+                                  Divider(color: Colors.grey,),
+                                  CustomListTile(
+                                    press: ()async{
+                                      Navigator.pushNamed(
+                                          context, Routes.myOrders);
+                                    },
+                                    title: 'My Orders'.tr(),
+                                    leadingIcon: Icons.category_outlined,
                                   ),
                                   Divider(color: Colors.grey,),
                                 ],
@@ -212,10 +221,10 @@ class SettingsScreen extends StatelessWidget {
                                   await AppCubit.get(context).saveNotificationSetting(context,val);
 
                                 },),
-                                Divider(color: Colors.grey,),
+                             /*   Divider(color: Colors.grey,),
                                 buildNotificationOptionRow(context,"Enable FingerPrint".tr(),Icons.fingerprint, AuthCubit.get(context).fingerPrint ,(val) async {
                                   await AuthCubit.get(context).savefingerPrintSetting(context,val);
-                                }),
+                                }),*/
                               ])),
                          /* Padding(
                               padding: EdgeInsets.all(20.h),
@@ -412,7 +421,7 @@ class SettingsScreen extends StatelessWidget {
                                   ],
                                 )),
                           ),
-                          SizedBox(height: 20.h,),
+                       /*   SizedBox(height: 20.h,),
                           Text('Contact With Us'.tr(),style: textStyle(context,size: 13.sp,
                             fontWeight: FontWeight.bold,color: Colors.grey
                           ),textAlign: TextAlign.center,),
@@ -437,7 +446,7 @@ class SettingsScreen extends StatelessWidget {
 
                               ],
                             ),
-                          ),
+                          ),*/
 
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10.0,top: 5),

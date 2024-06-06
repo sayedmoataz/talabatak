@@ -339,7 +339,7 @@ Widget buildGridProduct({
               ),
             ],
           ),
-          Align(
+   /*       Align(
               alignment: Alignment.topRight,
               child: Padding(
                 padding: const EdgeInsets.only(top: 12, right: 5),
@@ -369,7 +369,7 @@ Widget buildGridProduct({
                     color: AppCubit.get(context).primaryColor,
                   ),
                 ),
-              )),
+              )),*/
         ],
       ),
     );

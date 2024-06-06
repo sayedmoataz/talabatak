@@ -39,12 +39,14 @@ Future<void> main() async {
   }
 
   await EasyLocalization.ensureInitialized();
-
+  await Future.delayed(Duration(seconds: 2));
   await firebaseMessaging.getToken().then((token) {
     Fcmtoken = token;
     print("Fcmtoken" + Fcmtoken!);
+  }).catchError((e) {
+    log('firebaseMessaging.getToken() error is: $e');
   });
-  log(Fcmtoken??'test token');
+  log(Fcmtoken ?? 'test token');
 
   handleNotifications();
 
@@ -87,7 +89,15 @@ Future<void> main() async {
 FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
 handleNotifications() async {
-  await firebaseMessaging.requestPermission(sound: true, alert: true);
+  NotificationSettings settings =
+      await firebaseMessaging.requestPermission(sound: true, alert: true);
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    log('User granted permission');
+  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    log('User granted provisional permission');
+  } else {
+    log('User declined or has not accepted permission');
+  }
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await firebaseMessaging.subscribeToTopic("all");
   await firebaseMessaging.subscribeToTopic("customer");

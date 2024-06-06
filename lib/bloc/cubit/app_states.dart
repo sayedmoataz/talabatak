@@ -18,6 +18,7 @@ class changeGenderState extends AppStates {}
 class drobDownCountryState extends AppStates {}
 class changeCountryState extends AppStates {}
 class changeJobState extends AppStates {}
+class HomeGetLocationState extends AppStates {}
 
 class OnBoardingPageViewChangedState extends AppStates {}
 

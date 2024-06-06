@@ -110,7 +110,7 @@ class FavShopsView extends StatelessWidget {
                                                           ),
                                                         );
                                                       },)),
-                                                Align(
+                                               /* Align(
                                                     alignment: Alignment.topRight,
                                                     child: Padding(
                                                       padding: const EdgeInsets.only(top: 12, right: 5),
@@ -131,7 +131,7 @@ class FavShopsView extends StatelessWidget {
                                                         ),
                                                       ),
                                                     )),
-
+*/
 
                                               ],
                                             ),

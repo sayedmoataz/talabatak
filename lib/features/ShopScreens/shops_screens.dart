@@ -452,7 +452,7 @@ class ShopsScreen extends StatelessWidget {
                                                         ),
                                                       ),
                                                     ),
-                                                    Align(
+                                                /*    Align(
                                                         alignment:
                                                             Alignment.topRight,
                                                         child: Padding(
@@ -513,7 +513,7 @@ class ShopsScreen extends StatelessWidget {
                                                                       .favorite_border),
                                                             ),
                                                           ),
-                                                        )),
+                                                        )),*/
                                                   ],
                                                 ),
                                                 Padding(
@@ -740,7 +740,7 @@ Widget buildShopsScreen({
                                   ? Colors.red
                                   : Colors.amber),
                     ),
-                    IconButton(
+              /*      IconButton(
                       icon: Icon(CacheHelper.getData(
                                   key: "vendorLiked${vendors.id!}") ==
                               true
@@ -756,7 +756,7 @@ Widget buildShopsScreen({
                             : AppCubit.get(context)
                                 .LikeShop(vendors.id!, context);
                       },
-                    )
+                    )*/
                   ],
                 ),
               ],

@@ -79,7 +79,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     elevation: 0,
                     backgroundColor: Colors.transparent,
                     actions: [
-                      CacheHelper.getData(key: "isLogged") == false
+      /*                CacheHelper.getData(key: "isLogged") == false
                           ? Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 4.0),
@@ -140,7 +140,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ),*/
                       Card(
                         elevation: 0,
                         color: cubit.primaryColor,

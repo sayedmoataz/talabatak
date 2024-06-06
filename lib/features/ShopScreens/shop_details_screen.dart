@@ -276,7 +276,7 @@ class _ShopDetailsScreenState extends State<ShopDetailsScreen>
                               ),
                             ),
                           ),
-                          InkWell(
+                  /*        InkWell(
                             onTap: () {
                               CacheHelper.getData(key: "isLogged") == false
                                   ? popDialog(
@@ -302,7 +302,7 @@ class _ShopDetailsScreenState extends State<ShopDetailsScreen>
                                   ? Icons.favorite
                                   : Icons.favorite_border),
                             ),
-                          )
+                          )*/
                         ],
                       ),
                       Container(

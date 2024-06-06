@@ -39,7 +39,7 @@ class NotifyHelper {
   displayNotification({required String title, required String body}) async {
     var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
         'your channel id', 'your channel name',
-        importance: Importance.max, priority: Priority.high);
+        importance: Importance.max, priority: Priority.high,onlyAlertOnce: true);
     var platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(

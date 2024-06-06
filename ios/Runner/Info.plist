@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>talabatek</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -11,9 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Work+</string>
-	<key>CFBundleDisplayName</key>
-    <string>App Name</string>
+	<string>talabatek</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -24,6 +26,29 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Take Photo From Camera to update user image profile</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location is required to get your address and shipping order to you  also you can disable it with no problem</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is required to get your address and shipping order to you</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required to get your address and shipping order to you</string>
+	<key>NSMicrophoneUsageDescription </key>
+	<string>Used to capture audio for image picker plugin.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Choose Photo From Gallery and your image profile</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs your permission to track data for providing better experience.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,18 +68,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>NSCameraUsageDescription</key>
-	<string>Take Photo From Camera to update user image profile</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your location is required to get your address and shipping order to you  also you can disable it with no problem</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location is required to get your address and shipping order to you</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is required to get your address and shipping order to you</string>
-	<key>NSMicrophoneUsageDescription </key>
-	<string>Used to capture audio for image picker plugin.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Choose Photo From Gallery and your image profile</string>
-
 </dict>
 </plist>
